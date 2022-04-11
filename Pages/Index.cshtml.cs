@@ -1,6 +1,4 @@
 ﻿
-using Calculator_with_tests.Data;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -17,12 +15,12 @@ namespace Calculator_with_tests.Pages
         public string num2 { get; set; }
         [BindProperty(SupportsGet = true)]
         public string answer { get; set; }
-        public string answerReturn { get; set; }
+
 
         [BindProperty]
         public string Answer { get; set; }
         [BindProperty]
-        public List<Answer> Answers { get; set; }
+
         public string ErrorMessage { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -30,10 +28,7 @@ namespace Calculator_with_tests.Pages
         }
 
 
-        //public IndexModel()
-        //{
-        //    IList<string> Answers = new List<string>();
-        //}
+        //https://stackoverflow.com/questions/70828584/how-to-do-unit-testing-of-viewdata-in-razor-pages
 
         //https://www.learnrazorpages.com/razor-pages/handler-methods
         public PageResult OnPostAdd(string Num1, string Num2)
@@ -47,13 +42,13 @@ namespace Calculator_with_tests.Pages
                 float answer = num1 + num2;
 
                 Answer = (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
-                ViewData["answer"] = $"The answer from Add is {Answer}";
+                ViewData["answer"] = Answer;
 
                 // Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
-                ErrorMessage = "You have an error which is ... " + e;
+                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
 
             }
 
@@ -74,12 +69,12 @@ namespace Calculator_with_tests.Pages
                 //  Answer = new List<Answer>{};
 
 
-                ViewData["answer"] = $"The answer is {text}";
+                ViewData["answer"] = text;
                 //  Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
-                ErrorMessage = "You have an error which is ... " + e;
+                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
             }
             return Page();
         }
@@ -100,7 +95,7 @@ namespace Calculator_with_tests.Pages
             }
             catch (Exception e)
             { //catch if there is an error
-                ErrorMessage = "You have an error which is ... " + e;
+                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
             }
             return Page();
         }
@@ -120,7 +115,7 @@ namespace Calculator_with_tests.Pages
             }
             catch (Exception e)
             { //catch if there is an error
-                ErrorMessage = "You have an error which is ... " + e;
+                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
             }
             return Page();
         }
