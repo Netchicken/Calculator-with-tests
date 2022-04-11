@@ -6,18 +6,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Calculator_with_tests.Pages
 {
+
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
 
+        [BindProperty(SupportsGet = true)]
         public string num1 { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string num2 { get; set; }
+        [BindProperty(SupportsGet = true)]
         public string answer { get; set; }
         public string answerReturn { get; set; }
 
         [BindProperty]
-        public Answer Answer { get; set; }
-        public IList<string> Answers { get; set; }
+        public string Answer { get; set; }
+        [BindProperty]
+        public List<Answer> Answers { get; set; }
         public string ErrorMessage { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -31,7 +36,7 @@ namespace Calculator_with_tests.Pages
         //}
 
         //https://www.learnrazorpages.com/razor-pages/handler-methods
-        public RedirectToPageResult OnPostAdd(string Num1, string Num2)
+        public PageResult OnPostAdd(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
@@ -41,7 +46,10 @@ namespace Calculator_with_tests.Pages
 
                 float answer = num1 + num2;
 
-                Answer.Text = (Num1 + " + " + Num2 + " = " + answer); //send back the answer
+                Answer = (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
+                ViewData["answer"] = $"The answer from Add is {Answer}";
+
+                // Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
@@ -49,10 +57,10 @@ namespace Calculator_with_tests.Pages
 
             }
 
-            return RedirectToPage();
+            return Page();
         }
 
-        public RedirectToPageResult OnPostSubtract(string Num1, string Num2)
+        public PageResult OnPostSubtract(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
@@ -63,16 +71,20 @@ namespace Calculator_with_tests.Pages
                 float answer = num1 - num2;
                 string text = num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
 
-                Answer.Text = (text);
+                //  Answer = new List<Answer>{};
+
+
+                ViewData["answer"] = $"The answer is {text}";
+                //  Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
                 ErrorMessage = "You have an error which is ... " + e;
             }
-            return RedirectToPage();
+            return Page();
         }
 
-        public RedirectToPageResult OnPostDivide(string Num1, string Num2)
+        public PageResult OnPostDivide(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
@@ -82,16 +94,18 @@ namespace Calculator_with_tests.Pages
 
                 float answer = num1 / num2;
 
-                Answer.Text = (Num2 + " / " + Num1 + " = " + answer); //send back the answer
+                Answer = (Num2 + " / " + Num1 + " = " + answer.ToString()); //send back the answer
+
+                ViewData["answer"] = Answer;
             }
             catch (Exception e)
             { //catch if there is an error
                 ErrorMessage = "You have an error which is ... " + e;
             }
-            return RedirectToPage();
+            return Page();
         }
 
-        public RedirectToPageResult OnPostMultiply(string Num1, string Num2)
+        public PageResult OnPostMultiply(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
@@ -101,21 +115,25 @@ namespace Calculator_with_tests.Pages
 
                 float answer = num1 * num2;
 
-                Answer.Text = (Num1 + " + " + Num2 + " = " + answer); //send back the answer
+                Answer = (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
+                ViewData["answer"] = Answer;
             }
             catch (Exception e)
             { //catch if there is an error
                 ErrorMessage = "You have an error which is ... " + e;
             }
-            return RedirectToPage();
+            return Page();
         }
 
         public void OnGet()
         {
-
-
-
+            // ViewData["answer"] = $"The answer from get is {Answer}";
+        }
+        public void Onpost()
+        {
 
         }
+
+
     }
 }

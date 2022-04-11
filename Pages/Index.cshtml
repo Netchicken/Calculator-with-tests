@@ -29,21 +29,9 @@
 
                       <label asp-for="answer">Answer</label>
                         <input asp-for="answer" class="form-control" style="width:70%;margin-bottom:5px">
-                         <label asp-for="Answer.Text"></label>
- @*                     
-@if (Model.Answers.Count >0)
-{
-      <ul>
-                        @foreach (var ans in  Model.Answers)
-                        {
-                            <li style="line-height:2.4">
-                               
-                                @ans
-                            </li>
-                        }
-                    </ul>
-
-}          *@          
+                         <h3>... @ViewData["answer"] ...</h3>
+                      
+          
 
 <label asp-for="ErrorMessage">Error Message</label>
                        
