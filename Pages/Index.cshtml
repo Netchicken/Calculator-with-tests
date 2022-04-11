@@ -10,7 +10,7 @@
             <form method="post">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Try our Calculator</h3>
+                    <h3 class="panel-title">The Calculator</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -28,14 +28,14 @@
                     </div>
 
                       <label asp-for="Answer">Answer</label>
-                                               <h3>... @ViewData["answer"] ...</h3>
-                                                <h3>... @Model.Answer ...</h3>
+                                              
+                                                <h3>@Model.Answer</h3>
                       
           
 
 <label asp-for="ErrorMessage">Error Message</label>
                        
-                          <label > @ViewData["ErrorMessage"]</label>
+                          
                            <label > @Model.ErrorMessage</label>
                 </div>
             </div>

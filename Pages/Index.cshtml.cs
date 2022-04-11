@@ -7,9 +7,9 @@ namespace Calculator_with_tests.Pages
 
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        // private readonly ILogger<IndexModel> _logger;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty(SupportsGet = true)] //SupportsGet sets the field data when the page reloads
         public string? num1 { get; set; }
         [BindProperty(SupportsGet = true)]
         public string? num2 { get; set; }
@@ -18,19 +18,16 @@ namespace Calculator_with_tests.Pages
         [BindProperty]
         public string? ErrorMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        //public IndexModel(ILogger<IndexModel> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IndexModel()
         {
         }
 
-
         //https://wellsb.com/csharp/aspnet/xunit-unit-test-razor-pages
-        //https://stackoverflow.com/questions/70828584/how-to-do-unit-testing-of-viewdata-in-razor-pages
-
         //https://www.learnrazorpages.com/razor-pages/handler-methods
         public PageResult OnPostAdd(string Num1, string Num2)
         {
@@ -40,7 +37,6 @@ namespace Calculator_with_tests.Pages
                 float num1 = Convert.ToSingle(Num1);
                 float num2 = Convert.ToSingle(Num2);
                 float answer = num1 + num2;
-
                 Answer = (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
 
             }
@@ -58,7 +54,6 @@ namespace Calculator_with_tests.Pages
             {
                 float num1 = Convert.ToSingle(Num1);
                 float num2 = Convert.ToSingle(Num2);
-
                 float answer = num1 - num2;
                 Answer = num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
 
@@ -77,12 +72,8 @@ namespace Calculator_with_tests.Pages
             {
                 float num1 = Convert.ToSingle(Num1);
                 float num2 = Convert.ToSingle(Num2);
-
                 float answer = num1 / num2;
-
                 Answer = (Num2 + " / " + Num1 + " = " + answer.ToString()); //send back the answer
-
-                //    ViewData["answer"] = Answer;
             }
             catch (Exception e)
             { //catch if there is an error
@@ -98,11 +89,9 @@ namespace Calculator_with_tests.Pages
             {
                 float num1 = Convert.ToSingle(Num1);
                 float num2 = Convert.ToSingle(Num2);
-
                 float answer = num1 * num2;
-
                 Answer = (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
-                                                                            //    ViewData["answer"] = Answer;
+
             }
             catch (Exception e)
             { //catch if there is an error
@@ -113,7 +102,7 @@ namespace Calculator_with_tests.Pages
 
         public void OnGet()
         {
-            // ViewData["answer"] = $"The answer from get is {Answer}";
+
         }
         public void Onpost()
         {
