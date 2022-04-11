@@ -27,15 +27,16 @@
                              <button type="submit" asp-page-handler="Multiply" class="btn btn-success">Multiply</button>
                     </div>
 
-                      <label asp-for="answer">Answer</label>
-                        <input asp-for="answer" class="form-control" style="width:70%;margin-bottom:5px">
-                         <h3>... @ViewData["answer"] ...</h3>
+                      <label asp-for="Answer">Answer</label>
+                                               <h3>... @ViewData["answer"] ...</h3>
+                                                <h3>... @Model.Answer ...</h3>
                       
           
 
 <label asp-for="ErrorMessage">Error Message</label>
                        
                           <label > @ViewData["ErrorMessage"]</label>
+                           <label > @Model.ErrorMessage</label>
                 </div>
             </div>
         </form>

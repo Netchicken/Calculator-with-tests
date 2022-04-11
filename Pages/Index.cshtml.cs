@@ -10,24 +10,25 @@ namespace Calculator_with_tests.Pages
         private readonly ILogger<IndexModel> _logger;
 
         [BindProperty(SupportsGet = true)]
-        public string num1 { get; set; }
+        public string? num1 { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string num2 { get; set; }
+        public string? num2 { get; set; }
         [BindProperty(SupportsGet = true)]
-        public string answer { get; set; }
-
-
+        public string? Answer { get; set; }
         [BindProperty]
-        public string Answer { get; set; }
-        [BindProperty]
+        public string? ErrorMessage { get; set; }
 
-        public string ErrorMessage { get; set; }
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
+        public IndexModel()
+        {
+        }
 
+
+        //https://wellsb.com/csharp/aspnet/xunit-unit-test-razor-pages
         //https://stackoverflow.com/questions/70828584/how-to-do-unit-testing-of-viewdata-in-razor-pages
 
         //https://www.learnrazorpages.com/razor-pages/handler-methods
@@ -38,20 +39,15 @@ namespace Calculator_with_tests.Pages
             {
                 float num1 = Convert.ToSingle(Num1);
                 float num2 = Convert.ToSingle(Num2);
-
                 float answer = num1 + num2;
 
                 Answer = (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
-                ViewData["answer"] = Answer;
 
-                // Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
-                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
-
+                ErrorMessage = "You have an error which is ... " + e;
             }
-
             return Page();
         }
 
@@ -64,17 +60,12 @@ namespace Calculator_with_tests.Pages
                 float num2 = Convert.ToSingle(Num2);
 
                 float answer = num1 - num2;
-                string text = num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
+                Answer = num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
 
-                //  Answer = new List<Answer>{};
-
-
-                ViewData["answer"] = text;
-                //  Answers.Add(Answer.Text);
             }
             catch (Exception e)
             { //catch if there is an error
-                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
+                ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
         }
@@ -91,11 +82,11 @@ namespace Calculator_with_tests.Pages
 
                 Answer = (Num2 + " / " + Num1 + " = " + answer.ToString()); //send back the answer
 
-                ViewData["answer"] = Answer;
+                //    ViewData["answer"] = Answer;
             }
             catch (Exception e)
             { //catch if there is an error
-                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
+                ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
         }
@@ -111,11 +102,11 @@ namespace Calculator_with_tests.Pages
                 float answer = num1 * num2;
 
                 Answer = (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
-                ViewData["answer"] = Answer;
+                                                                            //    ViewData["answer"] = Answer;
             }
             catch (Exception e)
             { //catch if there is an error
-                ViewData["ErrorMessage"] = "You have an error which is ... " + e;
+                ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
         }
