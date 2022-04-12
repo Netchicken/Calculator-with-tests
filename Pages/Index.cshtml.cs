@@ -34,10 +34,7 @@ namespace Calculator_with_tests.Pages
             //test that there are two numbers and the code works
             try
             {
-                float num1 = Convert.ToSingle(Num1);
-                float num2 = Convert.ToSingle(Num2);
-                float answer = num1 + num2;
-                Answer = (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
+                Answer = Add(Num1, Num2);
 
             }
             catch (Exception e)
@@ -45,6 +42,14 @@ namespace Calculator_with_tests.Pages
                 ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
+        }
+
+        public string Add(string Num1, string Num2)
+        {
+            float num1 = Convert.ToSingle(Num1);
+            float num2 = Convert.ToSingle(Num2);
+            float answer = num1 + num2;
+            return (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
         }
 
         public PageResult OnPostSubtract(string Num1, string Num2)
@@ -52,10 +57,7 @@ namespace Calculator_with_tests.Pages
             //test that there are two numbers and the code works
             try
             {
-                float num1 = Convert.ToSingle(Num1);
-                float num2 = Convert.ToSingle(Num2);
-                float answer = num1 - num2;
-                Answer = num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
+                Answer = Subtract(Num1, Num2);
 
             }
             catch (Exception e)
@@ -63,6 +65,14 @@ namespace Calculator_with_tests.Pages
                 ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
+        }
+
+        public string Subtract(string Num1, string Num2)
+        {
+            float num1 = Convert.ToSingle(Num1);
+            float num2 = Convert.ToSingle(Num2);
+            float answer = num1 - num2;
+            return num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
         }
 
         public PageResult OnPostDivide(string Num1, string Num2)
@@ -70,10 +80,7 @@ namespace Calculator_with_tests.Pages
             //test that there are two numbers and the code works
             try
             {
-                float num1 = Convert.ToSingle(Num1);
-                float num2 = Convert.ToSingle(Num2);
-                float answer = num1 / num2;
-                Answer = (Num2 + " / " + Num1 + " = " + answer.ToString()); //send back the answer
+                Answer = Divide(Num1, Num2);
             }
             catch (Exception e)
             { //catch if there is an error
@@ -82,15 +89,20 @@ namespace Calculator_with_tests.Pages
             return Page();
         }
 
+        public string Divide(string Num1, string Num2)
+        {
+            float num1 = Convert.ToSingle(Num1);
+            float num2 = Convert.ToSingle(Num2);
+            float answer = num1 / num2;
+            return (Num1 + " / " + Num2 + " = " + answer.ToString()); //send back the answer
+        }
+
         public PageResult OnPostMultiply(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
             {
-                float num1 = Convert.ToSingle(Num1);
-                float num2 = Convert.ToSingle(Num2);
-                float answer = num1 * num2;
-                Answer = (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
+                Answer = Multiply(Num1, Num2);
 
             }
             catch (Exception e)
@@ -98,6 +110,14 @@ namespace Calculator_with_tests.Pages
                 ErrorMessage = "You have an error which is ... " + e;
             }
             return Page();
+        }
+
+        public string Multiply(string Num1, string Num2)
+        {
+            float num1 = Convert.ToSingle(Num1);
+            float num2 = Convert.ToSingle(Num2);
+            float answer = num1 * num2;
+            return (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
         }
 
         public void OnGet()
