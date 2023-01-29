@@ -1,0 +1,77 @@
+using Calculator_with_tests.Pages;
+
+using Xunit;
+
+//https://xunit.net/
+
+namespace CalcXUnitTestsNew
+{
+    public class UnitTest1
+    {
+        IndexModel indexModel = new IndexModel();
+
+        [Fact]
+        public void AddTest()
+        {
+            var result = indexModel.Add("2", "2");
+            var actual = indexModel.Answer;
+            var expected = "2 + 2 = 4";
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void AddErrorTest()
+        {
+            var result = indexModel.OnPostAdd("2", "a");
+            var actual = indexModel.ErrorMessage;
+            Assert.NotEmpty(actual);
+        }
+
+
+        [Fact]
+        public void SubtractTest()
+        {
+            var result = indexModel.Subtract("2", "2");
+            var actual = indexModel.Answer;
+            var expected = "2 - 2 = 0";
+            Assert.Equal(expected, result);
+        }
+        [Fact]
+        public void SubtractErrorTest()
+        {
+            var result = indexModel.OnPostSubtract("2", "a");
+            var actual = indexModel.ErrorMessage;
+            Assert.NotEmpty(actual);
+        }
+        [Fact]
+        public void DivideTest()
+        {
+            var result = indexModel.Divide("2", "2");
+            var actual = indexModel.Answer;
+            var expected = "2 / 2 = 1";
+            Assert.Equal(expected, result);
+        }
+        [Fact]
+        public void DivideErrorTest()
+        {
+            var result = indexModel.OnPostDivide("2", "a");
+            var actual = indexModel.ErrorMessage;
+            Assert.NotEmpty(actual);
+        }
+        [Fact]
+        public void MultiplyTest()
+        {
+            var result = indexModel.Multiply("2", "2");
+            var actual = indexModel.Answer;
+            var expected = "2 * 2 = 4";
+            Assert.Equal(expected, result);
+        }
+        [Fact]
+        public void MultiplyErrorTest()
+        {
+            var result = indexModel.OnPostMultiply("2", "a");
+            var actual = indexModel.ErrorMessage;
+            Assert.NotEmpty(actual);
+        }
+    }
+}

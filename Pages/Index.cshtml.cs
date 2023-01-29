@@ -9,7 +9,7 @@ namespace Calculator_with_tests.Pages
     {
         // private readonly ILogger<IndexModel> _logger;
 
-        [BindProperty(SupportsGet = true)] //SupportsGet sets the field data when the page reloads
+        [BindProperty(SupportsGet = true)] //SupportsGet sets the field data back into the page when the page reloads
         public string? num1 { get; set; }
         [BindProperty(SupportsGet = true)]
         public string? num2 { get; set; }
