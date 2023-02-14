@@ -1,4 +1,6 @@
 ﻿
+using Calculator_with_tests.CalcOperations;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,7 +9,7 @@ namespace Calculator_with_tests.Pages
 
     public class IndexModel : PageModel
     {
-        // private readonly ILogger<IndexModel> _logger;
+        Operations operations = new Operations();
 
         [BindProperty(SupportsGet = true)] //SupportsGet sets the field data back into the page when the page reloads
         public string? num1 { get; set; }
@@ -18,10 +20,7 @@ namespace Calculator_with_tests.Pages
         [BindProperty]
         public string? ErrorMessage { get; set; }
 
-        //public IndexModel(ILogger<IndexModel> logger)
-        //{
-        //    _logger = logger;
-        //}
+
 
         public IndexModel()
         {
@@ -34,7 +33,7 @@ namespace Calculator_with_tests.Pages
             //test that there are two numbers and the code works
             try
             {
-                Answer = Add(Num1, Num2);
+                Answer = operations.Add(Num1, Num2);
 
             }
             catch (Exception e)
@@ -44,20 +43,13 @@ namespace Calculator_with_tests.Pages
             return Page();
         }
 
-        public string Add(string Num1, string Num2)
-        {
-            float num1 = Convert.ToSingle(Num1);
-            float num2 = Convert.ToSingle(Num2);
-            float answer = num1 + num2;
-            return (Num1 + " + " + Num2 + " = " + answer.ToString()); //send back the answer
-        }
 
         public PageResult OnPostSubtract(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
             {
-                Answer = Subtract(Num1, Num2);
+                Answer = operations.Subtract(Num1, Num2);
 
             }
             catch (Exception e)
@@ -67,20 +59,13 @@ namespace Calculator_with_tests.Pages
             return Page();
         }
 
-        public string Subtract(string Num1, string Num2)
-        {
-            float num1 = Convert.ToSingle(Num1);
-            float num2 = Convert.ToSingle(Num2);
-            float answer = num1 - num2;
-            return num1.ToString() + " - " + num2.ToString() + " = " + answer.ToString();
-        }
 
         public PageResult OnPostDivide(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
             {
-                Answer = Divide(Num1, Num2);
+                Answer = operations.Divide(Num1, Num2);
             }
             catch (Exception e)
             { //catch if there is an error
@@ -89,20 +74,14 @@ namespace Calculator_with_tests.Pages
             return Page();
         }
 
-        public string Divide(string Num1, string Num2)
-        {
-            float num1 = Convert.ToSingle(Num1);
-            float num2 = Convert.ToSingle(Num2);
-            float answer = num1 / num2;
-            return (Num1 + " / " + Num2 + " = " + answer.ToString()); //send back the answer
-        }
+
 
         public PageResult OnPostMultiply(string Num1, string Num2)
         {
             //test that there are two numbers and the code works
             try
             {
-                Answer = Multiply(Num1, Num2);
+                Answer = operations.Multiply(Num1, Num2);
 
             }
             catch (Exception e)
@@ -112,13 +91,6 @@ namespace Calculator_with_tests.Pages
             return Page();
         }
 
-        public string Multiply(string Num1, string Num2)
-        {
-            float num1 = Convert.ToSingle(Num1);
-            float num2 = Convert.ToSingle(Num2);
-            float answer = num1 * num2;
-            return (Num1 + " * " + Num2 + " = " + answer.ToString()); //send back the answer
-        }
 
         public void OnGet()
         {

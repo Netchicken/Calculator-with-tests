@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		sample tests.txt = sample tests.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcTests", "..\CalcTests\CalcTests.csproj", "{5C78CACA-BDE5-48DE-B977-408FB9BF8A75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{F31F8BEF-585C-4543-96D0-53054E5B8058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F31F8BEF-585C-4543-96D0-53054E5B8058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F31F8BEF-585C-4543-96D0-53054E5B8058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C78CACA-BDE5-48DE-B977-408FB9BF8A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C78CACA-BDE5-48DE-B977-408FB9BF8A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C78CACA-BDE5-48DE-B977-408FB9BF8A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C78CACA-BDE5-48DE-B977-408FB9BF8A75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
